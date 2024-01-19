@@ -1,1 +1,1 @@
-# Samantha-Figueroa-takehome-polleverywhere
+# Take Home Assignment: Pursuit x Poll Everywhere
