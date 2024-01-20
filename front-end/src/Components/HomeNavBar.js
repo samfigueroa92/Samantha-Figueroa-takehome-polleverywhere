@@ -1,6 +1,3 @@
-//navBar
-    //Logo/Name 
-    //SignIn/LogIn button
 
 const HomeNavBar = () => {
     // return (

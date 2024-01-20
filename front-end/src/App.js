@@ -24,7 +24,6 @@ const App = () => {
 
   return (
     <div className="App">
-      hi im the app
       <Router>
         {/* navbar component */}
         <Routes>

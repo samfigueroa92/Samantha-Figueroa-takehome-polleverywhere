@@ -19,7 +19,6 @@ import RafflesList from "../Components/RafflesList";
 const HomePage = ({ raffles }) => {
     return (
         <div className="HomePage">
-            hi im the homepage
             {/* <HomeNavigation /> */}
             <NewRaffleForm />
             <RafflesList raffles={raffles}/>

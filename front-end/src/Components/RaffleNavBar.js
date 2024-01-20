@@ -13,7 +13,6 @@ const RaffleNavBar = ({
 
   return (
     <div>
-      <h1>hi im the navbar for raffles</h1>
       <div>
         <button onClick={() => navigate("/")}>All Raffles</button>
         <button

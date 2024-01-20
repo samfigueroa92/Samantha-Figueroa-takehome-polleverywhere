@@ -1,5 +1,4 @@
 const SingleRaffle = ({ raffle }) => {
-  console.log(raffle);
   return (
     <div className="SingleRaffle">
       <a href={`/raffles/${raffle.id}`}>

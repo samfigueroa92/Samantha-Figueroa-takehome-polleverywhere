@@ -21,7 +21,7 @@ const ParticipantsList = () => {
 
     return (
         <div className="ParticipantsList">
-            <div>Participants: 11 total</div>
+            <div>Participants: {participants.length}</div>
             <div>
                 <input type="search" placeholder="Search" />
             </div>
