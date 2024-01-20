@@ -11,7 +11,6 @@ import HomePage from './Pages/HomePage';
 import RafflePage from './Pages/RafflePage';
 
 const API = process.env.REACT_APP_API_URL;
-console.log(API)
 
 const App = () => {
   const [raffles, setRaffles] = useState([]);

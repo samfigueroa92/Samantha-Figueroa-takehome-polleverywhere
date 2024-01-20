@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 //components
 import RaffleNavBar from "../Components/RaffleNavBar";
 import NewParticipantForm from "../Components/NewParticipantForm";
+import ParticipantsList from "../Components/ParticipantsList";
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -28,7 +29,7 @@ const RafflePage = () => {
 
   const renderContent = () => {
     if (showParticipants) {
-      return "Participants List";
+      return <ParticipantsList />;
     } else if (showWinner) {
       return "Winner Form";
     } else{
