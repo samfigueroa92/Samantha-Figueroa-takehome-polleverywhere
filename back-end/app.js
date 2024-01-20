@@ -11,11 +11,11 @@ const rafflesController = require('./controllers/rafflesController');
 app.use('/raffles', rafflesController);
 
 app.get('/', (req, res) => {
-    res.status(200).json({payload: 'Welcome! Service is running.'});
+    res.status(200).json({data: 'Welcome! Service is running.'});
 });
 
 app.get('*', (req,res) => {
-    res.status(404).json({payload: 'Oops! Error: Page Not Found'});
+    res.status(404).json({data: 'Oops! Error: Page Not Found'});
 });
 
 module.exports = app;
