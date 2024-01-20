@@ -18,18 +18,18 @@ const getParticipant = async (id) => {
     };
 };
 
-// const createParticipant = async (participant) => {
-//     const { name, capacity, floor } = participant;
-//     try {
-//         const newParticipant = await db.one('INSERT INTO participants (name, capacity, floor) VALUES ($1, $2, $3) RETURNING *', [name, capacity, floor]);
-//         return newParticipant;
-//     } catch (err) {
-//         return err;
-//     };
-// };
+const createParticipant = async (participant, id) => {
+    const { first_name, last_name, email, phone } = participant;
+    try {
+        const newParticipant = await db.one('INSERT INTO participants (raffle, first_name, last_name, email, phone) VALUES ($1, $2, $3, $4, $5) RETURNING *', [id, first_name, last_name, email, phone]);
+        return newParticipant;
+    } catch (err) {
+        return err;
+    };
+};
 
 module.exports = {
     getAllParticipants,
     getParticipant,
-    // createParticipant,
+    createParticipant,
 };

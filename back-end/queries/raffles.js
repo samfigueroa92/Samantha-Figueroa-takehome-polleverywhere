@@ -18,18 +18,18 @@ const getRaffle = async (id) => {
     };
 };
 
-// const createRaffle = async (raffle) => {
-//     const { name, capacity, floor } = raffle;
-//     try {
-//         const newRaffle = await db.one('INSERT INTO raffles (name, capacity, floor) VALUES ($1, $2, $3) RETURNING *', [name, capacity, floor]);
-//         return newRaffle;
-//     } catch (err) {
-//         return err;
-//     };
-// };
+const createRaffle = async (raffle) => {
+    const { name, secret_token, creation_date } = raffle;
+    try {
+        const newRaffle = await db.one('INSERT INTO raffles (name, secret_token, creation_date) VALUES ($1, $2, $3) RETURNING *', [name, secret_token, creation_date]);
+        return newRaffle;
+    } catch (err) {
+        return err;
+    };
+};
 
 module.exports = {
     getAllRaffles,
     getRaffle,
-    // createRaffle,
+    createRaffle,
 };

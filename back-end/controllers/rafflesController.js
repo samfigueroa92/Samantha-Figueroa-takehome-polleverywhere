@@ -30,18 +30,19 @@ raffles.get('/:id', async (req, res) => {
     };
 });
 
-// raffles.post('/', async (req, res) => {
-//     const { body } = req;
-//     try {
-//         const newRaffle = await createRaffle(body);
-//         if (newRaffle.id){
-//             res.status(200).json({ payload: newRaffle, success: true});
-//         } else {
-//             throw error;
-//         };
-//     } catch (err) {
-//         res.status(422).json({ payload: "Server Error. Could Not Create Raffle.", success: false });
-//     };
-// });
+raffles.post('/', async (req, res) => {
+    const { body } = req;
+
+    try {
+        const newRaffle = await createRaffle(body);
+        if (newRaffle.id){
+            res.status(200).json({ payload: newRaffle, success: true});
+        } else {
+            throw error;
+        };
+    } catch (err) {
+        res.status(422).json({ payload: "Server Error. Could Not Create Raffle.", success: false });
+    };
+});
 
 module.exports = raffles;

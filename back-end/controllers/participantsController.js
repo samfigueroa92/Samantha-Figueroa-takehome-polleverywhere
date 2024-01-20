@@ -29,18 +29,19 @@ participants.get('/:id', async (req, res) => {
     };
 });
 
-// participants.post('/', async (req, res) => {
-//     const { body } = req;
-//     try {
-//         const newParticipant = await createParticipant(body);
-//         if (newParticipant.id){
-//             res.status(200).json({ payload: newParticipant, success: true});
-//         } else {
-//             throw error;
-//         };
-//     } catch (err) {
-//         res.status(422).json({ payload: "Server Error. New participant could not be added.", success: false });
-//     };
-// });
+participants.post('/', async (req, res) => {
+    const { body } = req;
+    const { id } = req.params;
+    try {
+        const newParticipant = await createParticipant(body, id);
+        if (newParticipant.id){
+            res.status(200).json({ payload: newParticipant, success: true});
+        } else {
+            throw error;
+        };
+    } catch (err) {
+        res.status(422).json({ payload: "Server Error. New participant could not be added.", success: false });
+    };
+});
 
 module.exports = participants;
