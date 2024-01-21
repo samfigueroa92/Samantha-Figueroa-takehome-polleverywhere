@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 
-import logo from "../images/logo.png";
+import logo from "../images/raffle_logo.png";
 
 const HomeNavBar = () => {
   return (
@@ -16,7 +16,7 @@ const HomeNavBar = () => {
       <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Avatar alt="logo" src="https://www.belmont.k12.ma.us/bps/Portals/9/xBlog/uploads/2023/2/13/raffle.png" sx={{ width: 65, height: 65, marginRight:"15px" }} />
+            <Avatar alt="logo" src={logo} sx={{ width: 65, height: 65, marginRight:"15px" }} />
             <Typography
               variant="h6"
               noWrap
