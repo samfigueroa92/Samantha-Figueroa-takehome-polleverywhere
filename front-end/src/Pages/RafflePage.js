@@ -9,6 +9,9 @@ import NewParticipantForm from "../Components/NewParticipantForm";
 import ParticipantsList from "../Components/ParticipantsList";
 import WinnerForm from "../Components/WinnerForm";
 
+//styling
+import "./RafflePage.css";
+
 const API = process.env.REACT_APP_API_URL;
 
 const RafflePage = () => {
@@ -36,7 +39,7 @@ const RafflePage = () => {
   };
 
   return (
-    <div>
+    <div className="RafflePage">
       <RaffleNavBar
         showRegistration={showRegistration}
         setShowRegistration={setShowRegistration}

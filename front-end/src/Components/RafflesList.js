@@ -1,3 +1,6 @@
+//styling
+import "./RafflesList.css"
+
 //components
 import SingleRaffle from "./SingleRaffle";
 
