@@ -14,7 +14,7 @@ const SingleRaffle = ({ raffle }) => {
           component="span"
           sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
         >
-          <Card>
+          <Card sx={{width: 300, height: 300}}>
             <CardContent>
               <Typography
                 sx={{ fontSize: 25 }}

@@ -1,5 +1,4 @@
 .NewRaffleForm{
-    /* border: 2px solid green; */
     width: 100%;
 }
 
@@ -9,14 +8,19 @@
 
 .NewRaffleForm-content form{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    
+    justify-content: center; 
+}
+
+.NewRaffleForm-fields{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 15px;
 }
 
 .NewRaffleForm-content-text{
-    /* font-size: 18px; */
     margin: 10px;
     text-align: center;
 }

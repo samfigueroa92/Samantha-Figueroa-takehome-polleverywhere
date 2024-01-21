@@ -19,11 +19,13 @@ const getRaffle = async (id) => {
 };
 
 const createRaffle = async (raffle) => {
-    const { name, secret_token, creation_date } = raffle;
+    const { name, secret_token } = raffle;
+ 
     try {
-        const newRaffle = await db.one('INSERT INTO raffles (name, secret_token, creation_date) VALUES ($1, $2, $3) RETURNING *', [name, secret_token, creation_date]);
+        const newRaffle = await db.one('INSERT INTO raffles (name, secret_token, creation_date) VALUES ($1, $2, NOW()) RETURNING *', [name, secret_token]);
         return newRaffle;
     } catch (err) {
+        console.log("ERROR")
         return err;
     };
 };

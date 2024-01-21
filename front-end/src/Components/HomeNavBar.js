@@ -56,7 +56,7 @@ const HomeNavBar = () => {
               sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
             ></Box>
             <Box sx={{ flexGrow: 0 }}>
-              <IconButton onClick="" sx={{ p: 0 }}>
+              <IconButton sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Box>
