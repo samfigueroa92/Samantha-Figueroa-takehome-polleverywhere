@@ -9,6 +9,7 @@ import './App.css';
 //pages 
 import HomePage from './Pages/HomePage';
 import RafflePage from './Pages/RafflePage';
+import HomeNavBar from './Components/HomeNavBar';
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -25,7 +26,7 @@ const App = () => {
   return (
     <div className="App">
       <Router>
-        {/* navbar component */}
+        <HomeNavBar />
         <Routes>
           <Route path="/" element={<HomePage raffles={raffles} />} />
           <Route path="/raffles/:id" element={<RafflePage />} />

@@ -1,0 +1,10 @@
+.NewParticipantForm{
+    /* border: 1px solid purple; */
+    width: 80vw;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.NewParticipantForm-buttons{
+    margin: 0 auto;
+}
