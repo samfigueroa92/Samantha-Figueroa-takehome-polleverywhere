@@ -1,0 +1,9 @@
+.HomePage{
+    border: 2px solid red;
+    width: 70vw;
+    margin: 0 auto;
+}
+
+.HomePage h1{
+    text-align: center;
+}

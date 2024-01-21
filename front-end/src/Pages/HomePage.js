@@ -1,15 +1,5 @@
-//navigation bar
-    //Logo/Name 
-    //SignIn/LogIn button
-//new raffle form
-    //name input
-    //secret token input
-    //submit button
-//list of all raffles
-    //name
-    //date
-    //winner
-    //date raffle picked a winner 
+//styling
+import "./HomePage.css"
 
 //components
 // import HomeNavigation from "../Components/HomeNavigation";
@@ -19,6 +9,7 @@ import RafflesList from "../Components/RafflesList";
 const HomePage = ({ raffles }) => {
     return (
         <div className="HomePage">
+            <h1> Welcome to Raffle Wizard!</h1>
             {/* <HomeNavigation /> */}
             <NewRaffleForm />
             <RafflesList raffles={raffles}/>
