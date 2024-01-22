@@ -46,6 +46,9 @@ const Winner = ({ winner }) => {
                 {`${first_name} ${last_name}`}
               </Typography>
               <Typography sx={{ mb: 1.5, fontSize: 20 }} color="text.secondary">
+               Registered on: {registration_date}
+              </Typography>
+              <Typography sx={{ mb: 1.5, fontSize: 20 }} color="text.secondary">
                 <NumbersIcon fontSize="18px" /> {id}
               </Typography>
               <Typography sx={{ mb: 1.5, fontSize: 20 }} color="text.secondary">
@@ -63,12 +66,3 @@ const Winner = ({ winner }) => {
 };
 
 export default Winner;
-
-{
-  /* <img src="https://t4.ftcdn.net/jpg/04/54/58/47/360_F_454584719_dhKO4mMII6269PpQxgQTqE9T2i9zlFYz.jpg" alt="winner" />
-<div>{`${first_name} ${last_name}`}</div>
-<div>winner {registration_date}</div>
-<div>{id}</div>
-<div>winner {email}</div>
-<div>winner {phone}</div> */
-}

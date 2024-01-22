@@ -1,36 +1,35 @@
 //dependencies
 import axios from "axios";
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 
 //styling
 import "./NewRaffleForm.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { toast } from "react-toastify";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 const NewRaffleForm = () => {
+
   const [newRaffle, setNewRaffle] = useState({
     name: "",
     secret_token: "",
   });
-
-  // const navigate = useNavigate();
 
   const addRaffle = () => {
     axios
       .post(`${API_URL}/raffles`, newRaffle)
       .then((res) => {
         if (res.data.success) {
-          // setSuccess("Success! Your raffle has been created.")
-          // setFormSuccess(true);
-          // navigate("/");
-          alert("Success");
+          toast.success("Success! Your raffle was created.", {
+            theme: "colored",
+          });
+          
         } else {
-          // setError("Error. Raffle could not be created.")
-          // setFormSuccess(true);
-          alert("Error");
+          toast.error("Error. Raffle could not be created.", {
+            theme: "colored",
+          });
         }
       })
       .catch((err) => console.log(err));

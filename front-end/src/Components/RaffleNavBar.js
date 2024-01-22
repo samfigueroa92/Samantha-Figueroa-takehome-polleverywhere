@@ -13,6 +13,7 @@ const RaffleNavBar = ({
   setShowParticipants,
   showWinner,
   setShowWinner,
+  participants
 }) => {
   const navigate = useNavigate();
 
@@ -46,7 +47,7 @@ const RaffleNavBar = ({
           >
             Participants
           </Button>
-          <Button
+          {participants.length === 0 ? null : (<Button
             variant="contained"
             size="large"
             onClick={() => {
@@ -56,7 +57,8 @@ const RaffleNavBar = ({
             }}
           >
             Pick A Winner
-          </Button>
+          </Button>)}
+          
         </Stack>
     </div>
   );

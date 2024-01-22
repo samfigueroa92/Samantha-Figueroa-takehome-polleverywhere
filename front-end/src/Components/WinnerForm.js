@@ -45,7 +45,7 @@ const WinnerForm = ({ raffle, participants }) => {
 
       setWinner(winner);
 
-      const { winner_id } = editedRaffle;
+      // const { winner_id } = editedRaffle;
 
       // const updatedRaffle = {...editedRaffle}
       // updatedRaffle.winner_id = winner.id;
@@ -73,7 +73,7 @@ const WinnerForm = ({ raffle, participants }) => {
       return (
         <>
           <h1>Pick a Winner</h1>
-          <form>
+          <form onSubmit={handleSubmit}>
             <TextField
               id="name"
               label="Secret Token"
@@ -108,29 +108,3 @@ const WinnerForm = ({ raffle, participants }) => {
 };
 
 export default WinnerForm;
-
-// {winner ? (
-//   <Winner winner={winner} />
-// ) : (
-//   <>
-//     <div>Pick a Winner</div>
-//     <form onSubmit={handleSubmit}>
-//     <div>
-//       <input
-//         type="text"
-//         value={tokenInput}
-//         placeholder="Secret Token"
-//         onChange={handleChange}
-//       />
-//       <button type="submit" >Pick a winner</button>
-//     </div>
-//     <div>
-//       <h3>Secret Token</h3>
-//       <p>
-//         The secret token used when creating the raffle must be provided.
-//       </p>
-//     </div>
-
-//     </form>
-//   </>
-// )}

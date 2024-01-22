@@ -1,6 +1,6 @@
 //dependencies
 // import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 // import { useParams } from "react-router-dom";
 import SingleParticipant from "./SingleParticipant";
 
@@ -37,6 +37,20 @@ const ParticipantsList = ({ participants }) => {
     });
   }
 
+  const renderContent = () => {
+    if(participants.length === 0){
+      return (
+        <div>No Registered Participants Yet</div>
+      )
+
+    } else{
+      return participantsToDisplay.length === 0 ? (<div className="ParticipantsList-noResults"><ErrorIcon fontSize="large" /> {`No results found for: ${searchInput}`}</div>) : participantsToDisplay.map((participant) => (
+        <SingleParticipant participant={participant} key={participant.id} />
+      ))
+    }
+
+ }
+
   return (
     <div className="ParticipantsList">
       <h2>Participants: {participants.length > 0 ? participants.length : (<div>No Participants</div>)}</h2>
@@ -51,9 +65,7 @@ const ParticipantsList = ({ participants }) => {
         ></TextField>
       </form>
       <div className="ParticipantsList-map">
-        {participantsToDisplay.length === 0 ? (<div className="ParticipantsList-noResults"><ErrorIcon fontSize="large" /> {`No results found for: ${searchInput}`}</div>) : participantsToDisplay.map((participant) => (
-          <SingleParticipant participant={participant} key={participant.id} />
-        ))}
+        {renderContent()}
       </div>
     </div>
   );

@@ -48,6 +48,7 @@ const RafflePage = () => {
   return (
     <div className="RafflePage">
       <RaffleNavBar
+      participants={participants}
         showRegistration={showRegistration}
         setShowRegistration={setShowRegistration}
         showParticipants={showParticipants}
