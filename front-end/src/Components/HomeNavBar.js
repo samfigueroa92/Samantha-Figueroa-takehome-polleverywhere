@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 
+import { signInWithGoogle, } from "../Services/Firebase";
+
 import logo from "../images/raffle_logo.png";
 
 const HomeNavBar = () => {
@@ -56,7 +58,7 @@ const HomeNavBar = () => {
               sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
             ></Box>
             <Box sx={{ flexGrow: 0 }}>
-              <IconButton sx={{ p: 0 }}>
+              <IconButton sx={{ p: 0 }} onClick={signInWithGoogle}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Box>
