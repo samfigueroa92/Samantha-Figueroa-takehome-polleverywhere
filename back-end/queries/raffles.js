@@ -19,17 +19,38 @@ const getRaffle = async (id) => {
 };
 
 const createRaffle = async (raffle) => {
-    const { name, secret_token, creation_date } = raffle;
+    const { name, secret_token } = raffle;
+ 
     try {
-        const newRaffle = await db.one('INSERT INTO raffles (name, secret_token, creation_date) VALUES ($1, $2, $3) RETURNING *', [name, secret_token, creation_date]);
+        const newRaffle = await db.one('INSERT INTO raffles (name, secret_token, creation_date) VALUES ($1, $2, NOW()) RETURNING *', [name, secret_token]);
         return newRaffle;
     } catch (err) {
         return err;
     };
 };
 
+const editRaffle = async (raffle, id) => {
+    const { winner_id } = raffle;
+    console.log(winner_id)
+
+    try {
+      console.log("Editing raffle with id of " + id);
+      const updatedRaffle = await db.one(
+        "UPDATE raffles SET raffled_date=NOW(), winner_id=$1 WHERE id=$2 RETURNING *",
+        [
+          winner_id,
+          id,
+        ]
+      );
+      return updatedRaffle;
+    } catch (error) {
+      return error;
+    }
+  };
+
 module.exports = {
     getAllRaffles,
     getRaffle,
     createRaffle,
+    editRaffle
 };

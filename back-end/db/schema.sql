@@ -16,7 +16,9 @@ CREATE TABLE raffles (
     id SERIAL PRIMARY KEY,
     name TEXT,
     secret_token TEXT,
-    creation_date TIMESTAMP
+    creation_date TIMESTAMP,
+    raffled_date TIMESTAMP,
+    winner_id INT
 );
 -- owner INT references users(id)
 
@@ -26,5 +28,7 @@ CREATE TABLE participants (
     first_name TEXT,
     last_name TEXT,
     email TEXT,
-    phone TEXT
+    phone TEXT,
+    img TEXT,
+    registration_date TIMESTAMP
 );

@@ -1,13 +1,16 @@
 const express = require('express');
 const raffles = express.Router();
 const participants = require('./participantsController');
+// const winner = require('./winnerController');
 
 raffles.use('/:id/participants', participants)
+// raffles.use('/:id/winner', winner)
 
 const {
     getAllRaffles,
     getRaffle,
     createRaffle,
+    editRaffle
 } = require('../queries/raffles');
 
 raffles.get('/', async (req, res) => {
@@ -44,5 +47,16 @@ raffles.post('/', async (req, res) => {
         res.status(422).json({ payload: "Server Error. Could Not Create Raffle.", success: false });
     };
 });
+
+raffles.put("/:id", async (req, res) => {
+    const { id } = req.params;
+    const editedRaffle = await editRaffle(req.body, id);
+    console.log(editedRaffle)
+    if (editedRaffle.id) {
+      res.status(200).json(editedRaffle);
+    } else {
+      res.status(400).json({ error: "Your request was not updated" });
+    }
+  });
 
 module.exports = raffles;

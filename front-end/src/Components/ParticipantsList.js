@@ -1,7 +1,7 @@
 //dependencies
-import axios from "axios";
+// import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import SingleParticipant from "./SingleParticipant";
 
 //styling
@@ -9,18 +9,18 @@ import "./ParticipantsList.css";
 import TextField from "@mui/material/TextField";
 import ErrorIcon from '@mui/icons-material/Error';
 
-const API = process.env.REACT_APP_API_URL;
+// const API = process.env.REACT_APP_API_URL;
 
-const ParticipantsList = () => {
-  const { id } = useParams();
-  const [participants, setParticipants] = useState([]);
+const ParticipantsList = ({ participants }) => {
+  // const { id } = useParams();
+  // const [participants, setParticipants] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
-  useEffect(() => {
-    axios
-      .get(`${API}/raffles/${id}/participants`)
-      .then((res) => setParticipants(res.data.payload));
-  }, [id]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${API}/raffles/${id}/participants`)
+  //     .then((res) => setParticipants(res.data.payload));
+  // }, [id]);
 
   const handleChange = (e) => {
     setSearchInput(e.target.value);

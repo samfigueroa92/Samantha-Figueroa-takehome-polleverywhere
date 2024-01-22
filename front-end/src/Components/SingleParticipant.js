@@ -19,7 +19,7 @@ const SingleParticipant = ({ participant }) => {
         component="span"
         sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)", textAlign:"center" }}
       >
-        <Card sx={{width: 400}}>
+        <Card elevation={12} sx={{width: 400}}>
           <CardContent>
           <Avatar alt={`${first_name} ${last_name}`} src="" sx={{ width: 65, height: 65, margin:"0 auto 25px auto", }} />
             <Typography sx={{ fontSize: 25 }} color="text.primary" gutterBottom>

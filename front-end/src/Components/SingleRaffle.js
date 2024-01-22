@@ -3,9 +3,14 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import "./SingleRaffle.css"
 
+//utils
+import { convertDate } from "../utils/dateConverter";
+
+// backgroundColor: "#6495ED"
 const SingleRaffle = ({ raffle }) => {
-  const { name, creation_date } = raffle;
+  const { name, creation_date, raffled_on, winner_id } = raffle;
 
   return (
     <div className="SingleRaffle">
@@ -14,7 +19,9 @@ const SingleRaffle = ({ raffle }) => {
           component="span"
           sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
         >
-          <Card>
+          <Card elevation={12} sx={{width: 300, height: 300, ':hover': {
+       boxShadow: "10px 10px #6495ED" 
+    }}}>
             <CardContent>
               <Typography
                 sx={{ fontSize: 25 }}
@@ -24,13 +31,13 @@ const SingleRaffle = ({ raffle }) => {
                 {name}
               </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                Created on: {creation_date}
+                Created on: {convertDate(creation_date)}
               </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                Winner ID: No Winner
+                Winner ID: {winner_id ? winner_id : "No winner"}
               </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                Raffled on: Date raffle ended
+                Raffled on: {raffled_on ? convertDate(raffled_on) : "Not raffled yet."}
               </Typography>
             </CardContent>
           </Card>
