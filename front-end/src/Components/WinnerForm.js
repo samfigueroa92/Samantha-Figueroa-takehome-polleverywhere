@@ -6,17 +6,22 @@ import axios from "axios";
 //components
 import Winner from "./Winner";
 
+//styling
+import "./WinnerForm.css";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+
 const API = process.env.REACT_APP_API_URL;
 
 const WinnerForm = ({ raffle, participants }) => {
-  const [winner, setWinner] = useState();
+  const [winner, setWinner] = useState(false);
   const [tokenInput, setTokenInput] = useState("");
   const [editedRaffle, setEditedRaffle] = useState({
     name: raffle.name,
     secret_token: raffle.secret_token,
     creation_date: raffle.creation_date,
     raffled_date: raffle.raffled_date,
-    winner_id: null
+    winner_id: null,
   });
   // const navigate = useNavigate();
 
@@ -25,7 +30,7 @@ const WinnerForm = ({ raffle, participants }) => {
   };
   // console.log(raffle)
   const updateRaffle = () => {
-    console.log(editedRaffle)
+    console.log(editedRaffle);
     axios
       .put(`${API}/raffles/${raffle.id}`, editedRaffle)
       .then((res) => setEditedRaffle(res.data))
@@ -44,7 +49,7 @@ const WinnerForm = ({ raffle, participants }) => {
 
       // const updatedRaffle = {...editedRaffle}
       // updatedRaffle.winner_id = winner.id;
-      setEditedRaffle({ ...editedRaffle, "winner_id": winner.id})
+      setEditedRaffle({ ...editedRaffle, winner_id: winner.id });
 
       // console.log(updatedRaffle)
       // console.log(winner.id)
@@ -53,46 +58,79 @@ const WinnerForm = ({ raffle, participants }) => {
       // updateRaffle(raffle.id);
     }
   };
-  console.log(editedRaffle)
+  console.log(editedRaffle);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     getWinner();
     updateRaffle();
+  };
 
-  }
-
-  
-
-  return (
-    <div className="WinnerForm">
-      {winner ? (
-        <Winner winner={winner} />
-      ) : (
+  const renderContent = () => {
+    if (winner) {
+      return <Winner winner={winner} />;
+    } else {
+      return (
         <>
-          <div>Pick a Winner</div>
-          <form onSubmit={handleSubmit}>
-          <div>
-            <input
-              type="text"
+          <h1>Pick a Winner</h1>
+          <form>
+            <TextField
+              id="name"
+              label="Secret Token"
+              variant="outlined"
               value={tokenInput}
               placeholder="Secret Token"
               onChange={handleChange}
+              required
+              fullWidth
             />
-            <button type="submit" >Pick a winner</button>
-          </div>
-          <div>
+            <Button
+              type="submit"
+              variant="contained"
+              size="large"
+              sx={{ margin: "20px", width: "50vw" }}
+            >
+              Pick a winner
+            </Button>
+          </form>
+          <div className="WinnerForm-secretToken">
             <h3>Secret Token</h3>
             <p>
               The secret token used when creating the raffle must be provided.
             </p>
           </div>
-
-          </form>
         </>
-      )}
-    </div>
-  );
+      );
+    }
+  };
+
+  return <div className="WinnerForm">{renderContent()}</div>;
 };
 
 export default WinnerForm;
+
+// {winner ? (
+//   <Winner winner={winner} />
+// ) : (
+//   <>
+//     <div>Pick a Winner</div>
+//     <form onSubmit={handleSubmit}>
+//     <div>
+//       <input
+//         type="text"
+//         value={tokenInput}
+//         placeholder="Secret Token"
+//         onChange={handleChange}
+//       />
+//       <button type="submit" >Pick a winner</button>
+//     </div>
+//     <div>
+//       <h3>Secret Token</h3>
+//       <p>
+//         The secret token used when creating the raffle must be provided.
+//       </p>
+//     </div>
+
+//     </form>
+//   </>
+// )}
