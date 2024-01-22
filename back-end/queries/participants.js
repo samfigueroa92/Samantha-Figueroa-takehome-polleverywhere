@@ -19,9 +19,9 @@ const getParticipant = async (id) => {
 };
 
 const createParticipant = async (participant, id) => {
-    const { first_name, last_name, email, phone } = participant;
+    const { first_name, last_name, email, phone, img } = participant;
     try {
-        const newParticipant = await db.one('INSERT INTO participants (raffle, first_name, last_name, email, phone) VALUES ($1, $2, $3, $4, $5) RETURNING *', [id, first_name, last_name, email, phone]);
+        const newParticipant = await db.one('INSERT INTO participants (raffle, first_name, last_name, email, phone, img, registration_date) VALUES ($1, $2, $3, $4, $5, $6, NOW()) RETURNING *', [id, first_name, last_name, email, phone, img]);
         return newParticipant;
     } catch (err) {
         return err;
