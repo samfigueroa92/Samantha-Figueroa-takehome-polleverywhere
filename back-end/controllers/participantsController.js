@@ -12,10 +12,10 @@ participants.get('/', async (req, res) => {
 
     const allParticipants = await getAllParticipants(id);
 
-    if(allParticipants[0]){
+    if(allParticipants){
         res.status(200).json({ payload: allParticipants, success: true });
     }else{
-        res.status(500).json({ payload: "Servor Error", success: false });
+        res.status(404).json({ payload: "No Participants Found", success: false });
     };
 });
 

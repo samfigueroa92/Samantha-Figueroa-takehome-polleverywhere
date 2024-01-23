@@ -1,10 +1,14 @@
 //dependencies
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 //styling
 import "./RaffleNavBar.css";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+
+const API = process.env.REACT_APP_API_URL;
 
 const RaffleNavBar = ({
   showRegistration,
@@ -13,6 +17,7 @@ const RaffleNavBar = ({
   setShowParticipants,
   showWinner,
   setShowWinner,
+  participants
 }) => {
   const navigate = useNavigate();
 
@@ -46,7 +51,7 @@ const RaffleNavBar = ({
           >
             Participants
           </Button>
-          <Button
+          {participants.length === 0 ? null : (<Button
             variant="contained"
             size="large"
             onClick={() => {
@@ -57,7 +62,8 @@ const RaffleNavBar = ({
           >
             Pick A Winner
           </Button>
-        </Stack>
+        )}
+      </Stack>
     </div>
   );
 };

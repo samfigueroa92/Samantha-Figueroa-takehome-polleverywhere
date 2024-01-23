@@ -1,5 +1,5 @@
 //dependencies
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 
@@ -14,57 +14,63 @@ import Button from "@mui/material/Button";
 const API = process.env.REACT_APP_API_URL;
 
 const WinnerForm = ({ raffle, participants }) => {
-  const [winner, setWinner] = useState(false);
+  const [winner, setWinner] = useState(null);
   const [tokenInput, setTokenInput] = useState("");
   const [editedRaffle, setEditedRaffle] = useState({
     name: raffle.name,
     secret_token: raffle.secret_token,
     creation_date: raffle.creation_date,
     raffled_date: raffle.raffled_date,
-    winner_id: null,
+    winner_id: null
   });
-  // const navigate = useNavigate();
+  
+  
+  useEffect(() => {
+    if(winner){
+      updateRaffle();
+      console.log(winner)
+    }
+    
+    // else{
+    //   axios.get(`${API}/raffles/${raffle.id}`)
+    // .then(res => setWinner(res.data.payload))
+
+    // }
+  
+  }, [winner]);
 
   const handleChange = (e) => {
     setTokenInput(e.target.value);
   };
   // console.log(raffle)
   const updateRaffle = () => {
-    console.log(editedRaffle);
+    // console.log(editedRaffle);
     axios
       .put(`${API}/raffles/${raffle.id}`, editedRaffle)
       .then((res) => setEditedRaffle(res.data))
-      .then(() => alert("Success"))
       .catch((error) => console.error(error));
+      // .then(() => alert("Success"))
   };
 
   const getWinner = () => {
     if (raffle.secret_token === tokenInput) {
-      const winner =
+      const randomWinner =
         participants[Math.floor(Math.random() * participants.length)];
 
-      setWinner(winner);
+      setWinner(randomWinner);
+      console.log(winner)
 
-      const { winner_id } = editedRaffle;
-
-      // const updatedRaffle = {...editedRaffle}
-      // updatedRaffle.winner_id = winner.id;
-      setEditedRaffle({ ...editedRaffle, winner_id: winner.id });
-
-      // console.log(updatedRaffle)
-      // console.log(winner.id)
-      // console.log(editedRaffle)
-
-      // updateRaffle(raffle.id);
+      setEditedRaffle({ ...editedRaffle, winner_id: randomWinner.id });
     }
   };
-  console.log(editedRaffle);
+
+  // const foundParticipant = participants.find(participant => participant.id === editedRaffle.winner_id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     getWinner();
-    updateRaffle();
   };
+  console.log(winner)
 
   const renderContent = () => {
     if (winner) {
@@ -73,7 +79,7 @@ const WinnerForm = ({ raffle, participants }) => {
       return (
         <>
           <h1>Pick a Winner</h1>
-          <form>
+          <form onSubmit={handleSubmit}>
             <TextField
               id="name"
               label="Secret Token"
@@ -90,7 +96,7 @@ const WinnerForm = ({ raffle, participants }) => {
               size="large"
               sx={{ margin: "20px", width: "50vw" }}
             >
-              Pick a winner
+              Submit
             </Button>
           </form>
           <div className="WinnerForm-secretToken">
@@ -108,29 +114,3 @@ const WinnerForm = ({ raffle, participants }) => {
 };
 
 export default WinnerForm;
-
-// {winner ? (
-//   <Winner winner={winner} />
-// ) : (
-//   <>
-//     <div>Pick a Winner</div>
-//     <form onSubmit={handleSubmit}>
-//     <div>
-//       <input
-//         type="text"
-//         value={tokenInput}
-//         placeholder="Secret Token"
-//         onChange={handleChange}
-//       />
-//       <button type="submit" >Pick a winner</button>
-//     </div>
-//     <div>
-//       <h3>Secret Token</h3>
-//       <p>
-//         The secret token used when creating the raffle must be provided.
-//       </p>
-//     </div>
-
-//     </form>
-//   </>
-// )}

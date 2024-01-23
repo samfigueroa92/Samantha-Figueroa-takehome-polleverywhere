@@ -24,6 +24,7 @@ raffles.get('/', async (req, res) => {
 });
 
 raffles.get('/:id', async (req, res) => {
+   
     const { id } = req.params;
     const raffle = await getRaffle(id);
     if(raffle.id){
