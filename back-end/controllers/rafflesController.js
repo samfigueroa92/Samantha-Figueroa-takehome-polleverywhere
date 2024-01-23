@@ -15,7 +15,6 @@ const {
 
 raffles.get('/', async (req, res) => {
     const allRaffles = await getAllRaffles();
-    
     if(allRaffles[0]){
         res.status(200).json({ payload: allRaffles, success: true });
     }else{
@@ -24,7 +23,6 @@ raffles.get('/', async (req, res) => {
 });
 
 raffles.get('/:id', async (req, res) => {
-   
     const { id } = req.params;
     const raffle = await getRaffle(id);
     if(raffle.id){
@@ -36,7 +34,6 @@ raffles.get('/:id', async (req, res) => {
 
 raffles.post('/', async (req, res) => {
     const { body } = req;
-
     try {
         const newRaffle = await createRaffle(body);
         if (newRaffle.id){
@@ -52,12 +49,23 @@ raffles.post('/', async (req, res) => {
 raffles.put("/:id", async (req, res) => {
     const { id } = req.params;
     const editedRaffle = await editRaffle(req.body, id);
-    console.log(editedRaffle)
+
     if (editedRaffle.id) {
-      res.status(200).json(editedRaffle);
+      res.status(200).json({ payload: editedRaffle, success: true});
     } else {
       res.status(400).json({ error: "Your request was not updated" });
     }
+  });
+
+  raffles.get("/get-winner-by-id/:id", async (req, res) => {
+    const { id } = req.params;
+    const winnerByID = await getRaffle(id);
+
+    if(winnerByID.winner_id){
+        res.status(200).json(winnerByID);
+    }else{
+        res.status(404).json({ error: "Winner not found.", data: null});
+    };
   });
 
 module.exports = raffles;
