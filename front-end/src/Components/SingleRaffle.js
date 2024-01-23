@@ -9,7 +9,9 @@ import "./SingleRaffle.css";
 import { convertDate } from "../utils/dateConverter";
 
 const SingleRaffle = ({ raffle }) => {
-  const { name, creation_date, raffled_on, winner_id } = raffle;
+  const { name, creation_date, raffled_date, winner_id } = raffle;
+
+  console.log(raffled_date)
 
   return (
     <div className="SingleRaffle">
@@ -43,7 +45,7 @@ const SingleRaffle = ({ raffle }) => {
                 Winner ID: {winner_id ? winner_id : "No winner"}
               </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                Raffled on: {raffled_on ? convertDate(raffled_on) : "Not raffled yet."}
+                Raffled on: {raffled_date ? convertDate(raffled_date) : "Not raffled yet."}
               </Typography>
             </CardContent>
           </Card>

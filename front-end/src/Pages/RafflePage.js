@@ -21,6 +21,7 @@ const RafflePage = () => {
   const [showParticipants, setShowParticipants] = useState(false);
   const [showWinner, setShowWinner] = useState(false);
   const [participants, setParticipants] = useState([]);
+  // const [winner, setWinner] = useState({});
 
   useEffect(() => {
     axios
@@ -28,6 +29,7 @@ const RafflePage = () => {
       .then((res) => setRaffle(res.data.payload))
       .catch((err) => console.error(err));
   }, [id]);
+
 
   useEffect(() => {
     axios
@@ -39,7 +41,7 @@ const RafflePage = () => {
     if (showParticipants) {
       return <ParticipantsList participants={participants} />;
     } else if (showWinner) {
-      return <WinnerForm raffle={raffle} participants={participants} />;
+      return <WinnerForm raffle={raffle} participants={participants}  />;
     } else{
       return <NewParticipantForm />;
     }
