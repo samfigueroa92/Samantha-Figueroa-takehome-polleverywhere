@@ -1,7 +1,8 @@
 //dependencies
 import { useState, useEffect } from "react";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 //components
 import Winner from "./Winner";
@@ -23,54 +24,61 @@ const WinnerForm = ({ raffle, participants }) => {
     raffled_date: raffle.raffled_date,
     winner_id: null
   });
-  
-  
-  useEffect(() => {
-    if(winner){
-      updateRaffle();
-      console.log(winner)
-    }
-    
-    // else{
-    //   axios.get(`${API}/raffles/${raffle.id}`)
-    // .then(res => setWinner(res.data.payload))
 
-    // }
-  
-  }, [winner]);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setTokenInput(e.target.value);
   };
-  // console.log(raffle)
-  const updateRaffle = () => {
-    // console.log(editedRaffle);
-    axios
-      .put(`${API}/raffles/${raffle.id}`, editedRaffle)
-      .then((res) => setEditedRaffle(res.data))
-      .catch((error) => console.error(error));
-      // .then(() => alert("Success"))
-  };
 
-  const getWinner = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     if (raffle.secret_token === tokenInput) {
       const randomWinner =
         participants[Math.floor(Math.random() * participants.length)];
 
-      setWinner(randomWinner);
-      console.log(winner)
+      const makeACopyWinner = { ...editedRaffle, winner_id: randomWinner.id };
 
-      setEditedRaffle({ ...editedRaffle, winner_id: randomWinner.id });
+      axios
+        .put(`${API}/raffles/${raffle.id}`, makeACopyWinner)
+        .then((res) => {
+          setEditedRaffle(res.data.payload);
+          console.log(res)
+          if (res.data.success) {
+                toast.success("Success! We have a winner!", {
+                  theme: "colored",
+                });
+                navigate("/")
+              } else {
+                toast.error("Error. Raffle could not be created.", {
+                  theme: "colored",
+                });
+              }
+        })
+        .catch((error) => console.error(error));
     }
   };
 
-  // const foundParticipant = participants.find(participant => participant.id === editedRaffle.winner_id);
+  const checkWinner = async () => {
+    axios
+      .get(`${API}/raffles/get-winner-by-id/${raffle.id}`)
+      .then((res) => {
+        let foundWinner = res.data.payload;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    getWinner();
+        foundWinner = participants.find(
+          (user) => user.id === foundWinner.winner_id
+        );
+
+        setWinner(foundWinner);
+        
+      })
+      .catch((err) => console.log(err));
   };
-  console.log(winner)
+
+  useEffect(() => {
+    checkWinner();
+  }, []);
 
   const renderContent = () => {
     if (winner) {
