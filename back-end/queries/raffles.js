@@ -1,6 +1,7 @@
 const db = require('../db/dbConfig');
 
 const getAllRaffles = async () => {
+    console.log(db)
     try {
         const allRaffles = await db.any('SELECT * FROM raffles');
         return allRaffles;
