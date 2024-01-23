@@ -1,13 +1,10 @@
 const db = require('../db/dbConfig');
 
 const getAllRaffles = async () => {
-    console.log(db.connect)
     try {
-        const allRaffles = await db.any('SELECT * FROM raffles');
-        console.log(allRaffles)
+        const allRaffles = await db.any('SELECT * FROM users');
         return allRaffles;
     } catch(err) {
-        console.log(err)
         return err;
     };
 };
