@@ -19,7 +19,7 @@ raffles.get('/', async (req, res) => {
     if(allRaffles[0]){
         res.status(200).json({ payload: allRaffles, success: true });
     }else{
-        res.status(500).json({ payload: "Server Error", success: false });
+        res.status(500).json({ payload: allRaffles, success: false });
     };
 });
 
