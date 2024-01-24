@@ -4,16 +4,16 @@ import Typography from '@mui/material/Typography';
 
 
 const BasicModal = ({ truncated,info }) => {
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchor, setAnchor] = useState(null);
 
     const handlePopoverOpen = (event) => {
-        setAnchorEl(event.currentTarget);
+        setAnchor(event.currentTarget);
       };
     
     const handlePopoverClose = () => {
-        setAnchorEl(null);
+        setAnchor(null);
       };
-    const open = Boolean(anchorEl);
+    const open = Boolean(anchor);
 
 
     return(
@@ -33,7 +33,7 @@ const BasicModal = ({ truncated,info }) => {
           pointerEvents: 'none',
         }}
         open={open}
-        anchorEl={anchorEl}
+        anchorEl={anchor}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
