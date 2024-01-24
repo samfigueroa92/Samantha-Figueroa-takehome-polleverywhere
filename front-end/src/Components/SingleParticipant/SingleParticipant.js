@@ -1,4 +1,7 @@
+//import
+import { useState } from "react";
 //styling
+import "./SingleParticipant.css";
 import NumbersIcon from "@mui/icons-material/Numbers";
 import EmailIcon from "@mui/icons-material/Email";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
@@ -8,11 +11,19 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 
-const SingleParticipant = ({ participant, index}) => {
+//components
+import BasicModal from "../BasicModal/BasicModal";
+
+const SingleParticipant = ({ participant, index }) => {
   const { id, first_name, last_name, email, phone } = participant;
 
+  let truncatedEmail
+  if(email.length > 18){
+    truncatedEmail = email.slice(0,18) + "...";
+  }
+
   return (
-    <div className="SingleParticipant">
+    <div className="SingleParticipant" >
       <Box
         component="span"
         sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)", textAlign:"center" }}
@@ -30,7 +41,17 @@ const SingleParticipant = ({ participant, index}) => {
             <NumbersIcon fontSize="18px"/> {id}
             </Typography>
             <Typography sx={{ mb: 1.5, fontSize: 25 }} color="text.secondary">
-            <EmailIcon fontSize="18px" /> {email}
+            {(email.length > 16) ?
+            <div className="SingleParticipant-Modal">
+            <EmailIcon fontSize="18px"/> 
+            <BasicModal truncated={truncatedEmail} info={email}/>
+            </div> 
+            : 
+            <>
+            <EmailIcon fontSize="18px"/> 
+            {email}
+            </>
+            }
             </Typography>
             <Typography sx={{ mb: 1.5, fontSize: 25 }} color="text.secondary">
             <LocalPhoneIcon fontSize="18px" /> {phone ? phone : "--"}
