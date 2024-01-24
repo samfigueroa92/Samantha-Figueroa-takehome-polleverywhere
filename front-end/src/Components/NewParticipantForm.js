@@ -36,15 +36,11 @@ const NewParticipantForm = () => {
       .post(`${API}/raffles/${id}/participants`, newParticipant)
       .then((res) => {
         if (res.data.success) {
-          toast.success("Success! Participant registered.", {
-            theme: "colored",
-          });
+          toast.success("Success! Participant registered.");
           navigate("/")
           
         } else {
-          toast.error("Error. Participant could not be registered.", {
-            theme: "colored",
-          });
+          toast.error("Error. Participant could not be registered.");
           
         }
       })

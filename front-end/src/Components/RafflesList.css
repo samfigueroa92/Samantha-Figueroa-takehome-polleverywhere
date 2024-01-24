@@ -1,5 +1,4 @@
 .RafflesList{
-    /* border: 2px solid blue; */
     display: flex;
     flex-wrap: wrap;
     align-items: center;

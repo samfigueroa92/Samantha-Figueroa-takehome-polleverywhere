@@ -7,7 +7,6 @@ import "./SingleRaffle.css";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import CelebrationIcon from '@mui/icons-material/Celebration';
-// import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import logo from '../images/raffle_logo.png';
 
 //utils

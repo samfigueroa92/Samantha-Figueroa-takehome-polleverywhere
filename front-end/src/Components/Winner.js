@@ -1,6 +1,3 @@
-// import axios from "axios";
-// import { useState } from 'react';
-
 //styling
 import NumbersIcon from "@mui/icons-material/Numbers";
 import EmailIcon from "@mui/icons-material/Email";

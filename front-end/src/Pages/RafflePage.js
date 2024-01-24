@@ -8,40 +8,67 @@ import RaffleNavBar from "../Components/RaffleNavBar";
 import NewParticipantForm from "../Components/NewParticipantForm";
 import ParticipantsList from "../Components/ParticipantsList";
 import WinnerForm from "../Components/WinnerForm";
+import Loading from "../Components/Loading";
 
 //styling
 import "./RafflePage.css";
+import { toast } from 'react-toastify'
 
 const API = process.env.REACT_APP_API_URL;
 
-const RafflePage = () => {
+const RafflePage = ({ loading, setLoading }) => {
   const { id } = useParams();
   const [raffle, setRaffle] = useState({});
   const [showRegistration, setShowRegistration] = useState(true);
   const [showParticipants, setShowParticipants] = useState(false);
   const [showWinner, setShowWinner] = useState(false);
   const [participants, setParticipants] = useState([]);
-  // const [winner, setWinner] = useState({});
 
   useEffect(() => {
-    axios
+    try{
+      setLoading(true);
+      axios
       .get(`${API}/raffles/${id}`)
-      .then((res) => setRaffle(res.data.payload))
+      .then((res) => {
+        setRaffle(res.data.payload);
+        if(res.data.success){
+          setLoading(false);
+        }
+      })
       .catch((err) => console.error(err));
+
+    }catch(err){
+      toast.error("Error");
+      setLoading(false);
+    }
   }, [id]);
 
-
   useEffect(() => {
-    axios
+    try{
+      setLoading(true);
+
+      axios
       .get(`${API}/raffles/${id}/participants`)
-      .then((res) => setParticipants(res.data.payload));
+      .then((res) => {
+        setParticipants(res.data.payload);
+        if(res.data.success){
+          setLoading(false);
+        }
+      }).catch(err => console.error(err));
+
+    }catch(err){
+      toast.error("Error");
+      setLoading(false);
+    }
   }, [id]);
 
   const renderContent = () => {
-    if (showParticipants) {
-      return <ParticipantsList participants={participants} />;
+    if (loading){
+      return <Loading />
+    } else if (showParticipants) {
+      return <ParticipantsList participants={participants} loading={loading} />;
     } else if (showWinner) {
-      return <WinnerForm raffle={raffle} participants={participants}  />;
+      return <WinnerForm raffle={raffle} participants={participants} loading={loading} setLoading={setLoading}  />;
     } else{
       return <NewParticipantForm />;
     }

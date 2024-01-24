@@ -7,6 +7,7 @@ import SendIcon from '@mui/icons-material/Send';
 
 //components
 import Winner from "./Winner";
+import Loading from "./Loading";
 
 //styling
 import "./WinnerForm.css";
@@ -15,7 +16,7 @@ import Button from "@mui/material/Button";
 
 const API = process.env.REACT_APP_API_URL;
 
-const WinnerForm = ({ raffle, participants }) => {
+const WinnerForm = ({ raffle, participants, loading, setLoading }) => {
   const [winner, setWinner] = useState(null);
   const [tokenInput, setTokenInput] = useState("");
   const [editedRaffle, setEditedRaffle] = useState({
@@ -40,24 +41,28 @@ const WinnerForm = ({ raffle, participants }) => {
         participants[Math.floor(Math.random() * participants.length)];
 
       const makeACopyWinner = { ...editedRaffle, winner_id: randomWinner.id };
-
-      axios
+      try{
+        setLoading(true);
+  
+        axios
         .put(`${API}/raffles/${raffle.id}`, makeACopyWinner)
         .then((res) => {
           setEditedRaffle(res.data);
-          console.log(res)
           if (res.statusText === 'OK') {
-                toast.success("Success! We have a winner!", {
-                  theme: "light",
-                });
-                navigate("/")
+                toast.success("Success! We have a winner!");
+                navigate("/");
+                setLoading(false);
               } else {
-                toast.error("Error. Raffle could not be created.", {
-                  theme: "light",
-                });
+                toast.error("Error. Raffle could not be created.");
+                setLoading(false);
               }
         })
         .catch((error) => console.error(error));
+  
+      }catch(err){
+        toast.error("Error");
+        setLoading(false);
+      }
     }
   };
 
@@ -82,7 +87,9 @@ const WinnerForm = ({ raffle, participants }) => {
   }, []);
 
   const renderContent = () => {
-    if (winner) {
+    if(loading){
+      return <Loading />
+    }else if (winner) {
       return <Winner winner={winner} />;
     } else {
       return (
