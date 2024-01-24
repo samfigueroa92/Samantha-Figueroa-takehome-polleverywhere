@@ -51,7 +51,7 @@ raffles.put("/:id", async (req, res) => {
     const editedRaffle = await editRaffle(req.body, id);
 
     if (editedRaffle.id) {
-      res.status(200).json({ payload: editedRaffle, success: true});
+      res.status(200).json(editedRaffle);
     } else {
       res.status(400).json({ error: "Your request was not updated" });
     }

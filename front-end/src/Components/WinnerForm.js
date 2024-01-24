@@ -44,9 +44,9 @@ const WinnerForm = ({ raffle, participants }) => {
       axios
         .put(`${API}/raffles/${raffle.id}`, makeACopyWinner)
         .then((res) => {
-          setEditedRaffle(res.data.payload);
+          setEditedRaffle(res.data);
           console.log(res)
-          if (res.data.success) {
+          if (res.statusText === 'OK') {
                 toast.success("Success! We have a winner!", {
                   theme: "light",
                 });
@@ -65,7 +65,7 @@ const WinnerForm = ({ raffle, participants }) => {
     axios
       .get(`${API}/raffles/get-winner-by-id/${raffle.id}`)
       .then((res) => {
-        let foundWinner = res.data.payload;
+        let foundWinner = res.data;
 
         foundWinner = participants.find(
           (user) => user.id === foundWinner.winner_id
