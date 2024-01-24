@@ -2,7 +2,6 @@
 import NumbersIcon from "@mui/icons-material/Numbers";
 import EmailIcon from "@mui/icons-material/Email";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
-import "./SingleParticipant.css";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -11,7 +10,6 @@ import Avatar from "@mui/material/Avatar";
 
 const SingleParticipant = ({ participant, index}) => {
   const { id, first_name, last_name, email, phone } = participant;
-  
 
   return (
     <div className="SingleParticipant">

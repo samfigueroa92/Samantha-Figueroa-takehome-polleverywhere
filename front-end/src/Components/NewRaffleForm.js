@@ -23,14 +23,10 @@ const NewRaffleForm = () => {
       .post(`${API_URL}/raffles`, newRaffle)
       .then((res) => {
         if (res.data.success) {
-          toast.success("Success! Your raffle was created.", {
-            theme: "colored",
-          });
+          toast.success("Success! Your raffle was created.");
           
         } else {
-          toast.error("Error. Raffle could not be created.", {
-            theme: "colored",
-          });
+          toast.error("Error. Raffle could not be created.");
         }
       })
       .catch((err) => console.log(err));

@@ -5,7 +5,7 @@ import axios from 'axios';
 
 //styling
 import './App.css';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 //pages 
@@ -17,12 +17,27 @@ const API = process.env.REACT_APP_API_URL;
 
 const App = () => {
   const [raffles, setRaffles] = useState([]);
+  const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
-    axios.get(`${API}/raffles`)
-    .then(res => setRaffles(res.data.payload))
-    .catch(err => console.error(err))
+    try{
+      setLoading(true);
+
+      axios.get(`${API}/raffles`)
+      .then(res => {
+        setRaffles(res.data.payload);
+        console.log(res.data)
+
+        if(res.data.success){
+          setLoading(false);
+        }
+      })
+      .catch(err => console.error(err))
+    }catch(err){
+      toast.error("Error");
+      setLoading(false);
+    }
   }, []);
 
 
@@ -39,13 +54,12 @@ const App = () => {
         draggable
         pauseOnHover
         theme="light"
-        // toastStyle={{ backgroundColor: "crimson" }}
       />
       <Router>
         <HomeNavBar />
         <Routes>
-          <Route path="/" element={<HomePage raffles={raffles}  />} />
-          <Route path="/raffles/:id" element={<RafflePage  />} />
+          <Route path="/" element={<HomePage raffles={raffles} loading={loading}  />} />
+          <Route path="/raffles/:id" element={<RafflePage loading={loading} setLoading={setLoading}  />} />
         </Routes>
       </Router>
     </div>

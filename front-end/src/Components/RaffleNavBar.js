@@ -1,6 +1,5 @@
 //dependencies
 import { useNavigate } from "react-router-dom";
-// import axios from "axios";
 import { useState } from "react";
 
 //styling
@@ -11,8 +10,6 @@ import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import CreateIcon from '@mui/icons-material/Create';
 import PeopleIcon from '@mui/icons-material/People';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-
-const API = process.env.REACT_APP_API_URL;
 
 const RaffleNavBar = ({
   showRegistration,
