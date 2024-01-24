@@ -4,6 +4,8 @@
 
 .NewRaffleForm h3{
     text-align: center;
+    font-size: 25px;
+    padding: 20px;
 }
 
 .NewRaffleForm-content form{
@@ -22,12 +24,14 @@
 
 .NewRaffleForm-content-text{
     margin: 10px;
+    padding-top: 45px;
     text-align: center;
+    font-size: 20px;
 }
 
 .NewRaffleForm-content-button{
     text-align: center;
-    padding: 20px;
+    padding: 45px;
 }
 
 

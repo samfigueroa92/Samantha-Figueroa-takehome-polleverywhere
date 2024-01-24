@@ -40,12 +40,12 @@ const ParticipantsList = ({ participants }) => {
   const renderContent = () => {
     if(participants.length === 0){
       return (
-        <div>No Registered Participants Yet</div>
+        <div className="noParticipants">No Registered Participants Yet</div>
       )
 
     } else{
-      return participantsToDisplay.length === 0 ? (<div className="ParticipantsList-noResults"><ErrorIcon fontSize="large" /> {`No results found for: ${searchInput}`}</div>) : participantsToDisplay.map((participant) => (
-        <SingleParticipant participant={participant} key={participant.id} />
+      return participantsToDisplay.length === 0 ? (<div className="ParticipantsList-noResults"><ErrorIcon fontSize="large" /> {`No results found for: ${searchInput}`}</div>) : participantsToDisplay.map((participant, index) => (
+        <SingleParticipant participant={participant} key={participant.id} index={index}/>
       ))
     }
 
@@ -53,7 +53,9 @@ const ParticipantsList = ({ participants }) => {
 
   return (
     <div className="ParticipantsList">
-      <h2>Participants: {participants.length > 0 ? participants.length : (<div>No Participants</div>)}</h2>
+      {!!participants.length && 
+      <div className="ParticipantsList-existing">
+      <h2>Participants: { participants.length }</h2>
       <form>
         <TextField
           id="search-bar"
@@ -64,6 +66,7 @@ const ParticipantsList = ({ participants }) => {
           fullWidth
         ></TextField>
       </form>
+      </div>}
       <div className="ParticipantsList-map">
         {renderContent()}
       </div>

@@ -39,6 +39,7 @@ const App = () => {
         draggable
         pauseOnHover
         theme="light"
+        // toastStyle={{ backgroundColor: "crimson" }}
       />
       <Router>
         <HomeNavBar />

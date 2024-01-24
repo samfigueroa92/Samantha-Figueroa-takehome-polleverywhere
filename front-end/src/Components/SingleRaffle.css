@@ -3,3 +3,12 @@
 .SingleRaffle:hover{
     background-color: blue;
 } */
+
+.SingleRaffle-Card-Title{
+    margin-top: 10px;
+}
+
+.SingleRaffle img{
+    width: 80px;
+
+}

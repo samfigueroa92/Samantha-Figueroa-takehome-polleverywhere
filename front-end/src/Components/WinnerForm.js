@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import SendIcon from '@mui/icons-material/Send';
 
 //components
 import Winner from "./Winner";
@@ -47,12 +48,12 @@ const WinnerForm = ({ raffle, participants }) => {
           console.log(res)
           if (res.data.success) {
                 toast.success("Success! We have a winner!", {
-                  theme: "colored",
+                  theme: "light",
                 });
                 navigate("/")
               } else {
                 toast.error("Error. Raffle could not be created.", {
-                  theme: "colored",
+                  theme: "light",
                 });
               }
         })
@@ -102,9 +103,9 @@ const WinnerForm = ({ raffle, participants }) => {
               type="submit"
               variant="contained"
               size="large"
-              sx={{ margin: "20px", width: "50vw" }}
+              sx={{ margin: "20px", width: "50vw", fontWeight:"600", fontSize: "20px", ":hover": { color: "orange" }}}
             >
-              Submit
+              <SendIcon sx={{ paddingRight: 1 }}/> Submit
             </Button>
           </form>
           <div className="WinnerForm-secretToken">
