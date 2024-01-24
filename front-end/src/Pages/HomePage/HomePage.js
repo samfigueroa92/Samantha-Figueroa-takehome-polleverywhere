@@ -2,9 +2,9 @@
 import "./HomePage.css";
 
 //components
-import NewRaffleForm from "../Components/NewRaffleForm";
-import RafflesList from "../Components/RafflesList";
-import Loading from "../Components/Loading";
+import NewRaffleForm from "../../Components/NewRaffleForm/NewRaffleForm";
+import RafflesList from "../../Components/RaffleList/RafflesList";
+import Loading from "../../Components/Loading/Loading";
 
 const HomePage = ({ raffles, loading }) => {
   return (

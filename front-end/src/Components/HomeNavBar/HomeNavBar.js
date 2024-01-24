@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 
-import logo from "../images/raffle_logo.png";
+import logo from "../../images/raffle_logo.png";
 
 const HomeNavBar = () => {
   return (

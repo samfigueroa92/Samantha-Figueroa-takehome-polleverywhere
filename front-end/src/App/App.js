@@ -9,9 +9,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 //pages 
-import HomePage from './Pages/HomePage';
-import RafflePage from './Pages/RafflePage';
-import HomeNavBar from './Components/HomeNavBar';
+import HomePage from '../Pages/HomePage/HomePage';
+import RafflePage from '../Pages/RafflePage/RafflePage';
+import HomeNavBar from '../Components/HomeNavBar/HomeNavBar';
 
 const API = process.env.REACT_APP_API_URL;
 

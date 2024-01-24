@@ -7,10 +7,10 @@ import "./SingleRaffle.css";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import CelebrationIcon from '@mui/icons-material/Celebration';
-import logo from '../images/raffle_logo.png';
+import logo from '../../images/raffle_logo.png';
 
 //utils
-import { convertDate } from "../utils/dateConverter";
+import { convertDate } from "../../utils/dateConverter";
 
 const SingleRaffle = ({ raffle, index }) => {
   const { name, creation_date, raffled_date, winner_id } = raffle;

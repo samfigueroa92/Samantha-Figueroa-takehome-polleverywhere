@@ -6,8 +6,8 @@ import { toast } from "react-toastify";
 import SendIcon from '@mui/icons-material/Send';
 
 //components
-import Winner from "./Winner";
-import Loading from "./Loading";
+import Winner from "../Winner/Winner";
+import Loading from "../Loading/Loading";
 
 //styling
 import "./WinnerForm.css";
