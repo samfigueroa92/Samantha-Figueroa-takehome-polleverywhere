@@ -2,7 +2,7 @@
 import "./RafflesList.css"
 
 //components
-import SingleRaffle from "./SingleRaffle";
+import SingleRaffle from "../SingleRaffle/SingleRaffle";
 
 const RafflesList = ({ raffles }) => {
     return (

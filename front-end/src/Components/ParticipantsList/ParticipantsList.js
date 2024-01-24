@@ -1,6 +1,6 @@
 //dependencies
 import { useState } from "react";
-import SingleParticipant from "./SingleParticipant";
+import SingleParticipant from "../SingleParticipant/SingleParticipant";
 
 //styling
 import "./ParticipantsList.css";

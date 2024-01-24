@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 //components
-import RaffleNavBar from "../Components/RaffleNavBar";
-import NewParticipantForm from "../Components/NewParticipantForm";
-import ParticipantsList from "../Components/ParticipantsList";
-import WinnerForm from "../Components/WinnerForm";
-import Loading from "../Components/Loading";
+import RaffleNavBar from "../../Components/RaffleNavBar/RaffleNavBar";
+import NewParticipantForm from "../../Components/NewParticipantForm/NewParticipantForm";
+import ParticipantsList from "../../Components/ParticipantsList/ParticipantsList";
+import WinnerForm from "../../Components/WinnerForm/WinnerForm";
+import Loading from "../../Components/Loading/Loading";
 
 //styling
 import "./RafflePage.css";
