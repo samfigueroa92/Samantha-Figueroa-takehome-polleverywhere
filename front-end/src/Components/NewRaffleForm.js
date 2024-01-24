@@ -7,6 +7,7 @@ import "./NewRaffleForm.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { toast } from "react-toastify";
+import CreateIcon from '@mui/icons-material/Create';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -74,8 +75,8 @@ const NewRaffleForm = () => {
             picking a winner.
           </div>
           <div className="NewRaffleForm-content-button">
-            <Button type="submit" variant="contained">
-              Create new raffle
+            <Button type="submit" variant="contained" size={"large"} sx={{ fontSize: "20px", fontWeight:"600",":hover": { color: "orange" }}}>
+              <CreateIcon sx={{paddingRight: 1}}/> Create new raffle
             </Button>
           </div>
         </form>

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import SendIcon from '@mui/icons-material/Send';
 
 //components
 import Winner from "./Winner";
@@ -43,16 +44,16 @@ const WinnerForm = ({ raffle, participants }) => {
       axios
         .put(`${API}/raffles/${raffle.id}`, makeACopyWinner)
         .then((res) => {
-          setEditedRaffle(res.data.payload);
+          setEditedRaffle(res.data);
           console.log(res)
-          if (res.data.success) {
+          if (res.statusText === 'OK') {
                 toast.success("Success! We have a winner!", {
-                  theme: "colored",
+                  theme: "light",
                 });
                 navigate("/")
               } else {
                 toast.error("Error. Raffle could not be created.", {
-                  theme: "colored",
+                  theme: "light",
                 });
               }
         })
@@ -64,7 +65,7 @@ const WinnerForm = ({ raffle, participants }) => {
     axios
       .get(`${API}/raffles/get-winner-by-id/${raffle.id}`)
       .then((res) => {
-        let foundWinner = res.data.payload;
+        let foundWinner = res.data;
 
         foundWinner = participants.find(
           (user) => user.id === foundWinner.winner_id
@@ -102,9 +103,9 @@ const WinnerForm = ({ raffle, participants }) => {
               type="submit"
               variant="contained"
               size="large"
-              sx={{ margin: "20px", width: "50vw" }}
+              sx={{ margin: "20px", width: "50vw", fontWeight:"600", fontSize: "20px", ":hover": { color: "orange" }}}
             >
-              Submit
+              <SendIcon sx={{ paddingRight: 1 }}/> Submit
             </Button>
           </form>
           <div className="WinnerForm-secretToken">

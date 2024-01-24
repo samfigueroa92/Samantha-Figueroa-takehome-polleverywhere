@@ -11,6 +11,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { toast } from "react-toastify";
+import SendIcon from '@mui/icons-material/Send';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -96,6 +98,7 @@ const NewParticipantForm = () => {
             variant="outlined"
             required
             fullWidth
+            sx={{ marginBottom: 2 }}
           ></TextField>
           <TextField
             id="phone"
@@ -108,10 +111,12 @@ const NewParticipantForm = () => {
           ></TextField>
           <div className="NewParticipantForm-buttons">
             <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
-              <Button variant="contained" size="large" type="submit">
+              <Button variant="contained" size="large" type="submit" sx={{ fontWeight:"600", width:"300px", fontSize: "20px", ":hover": { color: "orange" }}}>
+                <SendIcon sx={{paddingRight: 1}}/>
                 Submit
               </Button>
-              <Button type="button" onClick={handleReset} variant="contained" size="large">
+              <Button type="button" sx={{ fontWeight:"600", width:"300px", fontSize: "20px",":hover": { color: "orange" }}} onClick={handleReset} variant="contained" size="large">
+                <RestartAltIcon sx={{paddingRight: 1}}/>
                 Reset
               </Button>
             </Stack>

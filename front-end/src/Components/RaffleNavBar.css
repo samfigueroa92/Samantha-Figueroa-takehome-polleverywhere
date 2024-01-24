@@ -1,5 +1,6 @@
 .RaffleNavBar{
-    margin: 20px;
+    margin-top: 100px;
+    margin-bottom: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
