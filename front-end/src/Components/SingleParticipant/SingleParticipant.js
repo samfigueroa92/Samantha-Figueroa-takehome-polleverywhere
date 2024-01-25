@@ -1,5 +1,3 @@
-//import
-import { useState } from "react";
 //styling
 import "./SingleParticipant.css";
 import NumbersIcon from "@mui/icons-material/Numbers";
@@ -17,7 +15,7 @@ import BasicModal from "../BasicModal/BasicModal";
 const SingleParticipant = ({ participant, index }) => {
   const { id, first_name, last_name, email, phone } = participant;
 
-  let truncatedEmail
+  let truncatedEmail 
   if(email.length > 18){
     truncatedEmail = email.slice(0,18) + "...";
   }
@@ -44,7 +42,7 @@ const SingleParticipant = ({ participant, index }) => {
             {(email.length > 16) ?
             <div className="SingleParticipant-Modal">
             <EmailIcon fontSize="18px"/> 
-            <BasicModal truncated={truncatedEmail} info={email}/>
+            <BasicModal truncatedEmail={truncatedEmail} email={email}/>
             </div> 
             : 
             <>

@@ -2,8 +2,7 @@ import {useState} from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 
-
-const BasicModal = ({ truncated,info }) => {
+const BasicModal = ({ truncatedEmail, email }) => {
     const [anchor, setAnchor] = useState(null);
 
     const handlePopoverOpen = (event) => {
@@ -25,7 +24,7 @@ const BasicModal = ({ truncated,info }) => {
         onMouseLeave={handlePopoverClose}
         sx={{ mb: 1.5, fontSize: 25 }}
       >
-        {truncated}
+        {truncatedEmail}
       </Typography>
       <Popover
         id="mouse-over-popover"
@@ -45,7 +44,7 @@ const BasicModal = ({ truncated,info }) => {
         onClose={handlePopoverClose}
         disableRestoreFocus
       >
-        <Typography sx={{ p: 1 }}>{info}.</Typography>
+        <Typography sx={{ p: 1 }}>{email}</Typography>
       </Popover>
     </div>
 
