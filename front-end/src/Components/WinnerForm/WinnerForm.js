@@ -52,10 +52,11 @@ const WinnerForm = ({ raffle, participants, loading, setLoading }) => {
                 toast.success("Success! We have a winner!");
                 navigate("/");
                 setLoading(false);
-              } else {
-                toast.error("Error. Raffle could not be created.");
-                setLoading(false);
               }
+              // else {
+              //   toast.error("Error. Raffle could not be created.");
+              //   setLoading(false);
+              // }
         })
         .catch((error) => console.error(error));
   
