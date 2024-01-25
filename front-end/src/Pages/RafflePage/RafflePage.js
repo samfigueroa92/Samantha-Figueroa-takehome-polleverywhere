@@ -68,7 +68,7 @@ const RafflePage = ({ loading, setLoading }) => {
     } else if (showParticipants) {
       return <ParticipantsList participants={participants} loading={loading} />;
     } else if (showWinner) {
-      return <WinnerForm raffle={raffle} participants={participants} loading={loading} setLoading={setLoading}  />;
+      return <WinnerForm raffle={raffle} participants={participants}  />;
     } else{
       return <NewParticipantForm />;
     }

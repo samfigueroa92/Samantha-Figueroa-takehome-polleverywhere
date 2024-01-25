@@ -16,7 +16,7 @@ import Button from "@mui/material/Button";
 
 const API = process.env.REACT_APP_API_URL;
 
-const WinnerForm = ({ raffle, participants, loading, setLoading }) => {
+const WinnerForm = ({ raffle, participants }) => {
   const [winner, setWinner] = useState(null);
   const [tokenInput, setTokenInput] = useState("");
   const [editedRaffle, setEditedRaffle] = useState({
@@ -42,7 +42,7 @@ const WinnerForm = ({ raffle, participants, loading, setLoading }) => {
 
       const makeACopyWinner = { ...editedRaffle, winner_id: randomWinner.id };
       try{
-        setLoading(true);
+        // setLoading(true);
   
         axios
         .put(`${API}/raffles/${raffle.id}`, makeACopyWinner)
@@ -51,7 +51,7 @@ const WinnerForm = ({ raffle, participants, loading, setLoading }) => {
           if (res.statusText === 'OK') {
                 toast.success("Success! We have a winner!");
                 navigate("/");
-                setLoading(false);
+                // setLoading(false);
               }
               // else {
               //   toast.error("Error. Raffle could not be created.");
@@ -62,7 +62,7 @@ const WinnerForm = ({ raffle, participants, loading, setLoading }) => {
   
       }catch(err){
         toast.error("Error");
-        setLoading(false);
+        // setLoading(false);
       }
     }
   };
@@ -88,9 +88,10 @@ const WinnerForm = ({ raffle, participants, loading, setLoading }) => {
   }, []);
 
   const renderContent = () => {
-    if(loading){
-      return <Loading />
-    }else if (winner) {
+    // if(loading){
+    //   return <Loading />
+    // }else 
+    if (winner) {
       return <Winner winner={winner} />;
     } else {
       return (
